@@ -1,0 +1,45 @@
+{
+  "name": "boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "NODE_ENV=development gulp dev",
+    "release": "NODE_ENV=release gulp release",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  },
+  "devDependencies": {
+    "@types/es6-shim": "^0.31.32",
+    "@types/node": "^7.0.12",
+    "@types/react": "^15.0.21",
+    "@types/react-dom": "^0.14.23",
+    "@types/react-redux": "^4.4.38",
+    "@types/react-router-dom": "^4.0.3",
+    "awesome-typescript-loader": "^3.1.2",
+    "browser-sync": "^2.18.8",
+    "del": "^2.2.2",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-if": "^2.0.2",
+    "gulp-ignore": "^2.0.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^2.1.2",
+    "node-sass": "^4.5.2",
+    "pump": "^1.0.2",
+    "react-redux": "^5.0.4",
+    "react-router-dom": "^4.1.1",
+    "redux": "^3.6.0",
+    "typescript": "^2.2.2",
+    "webpack": "^2.4.1",
+    "webpack-stream": "^3.2.0"
+  }
+}
