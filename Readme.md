@@ -19,7 +19,7 @@ Clone or download this repository. Run `"npm install"` to install all dependenci
 * [react router dom](https://www.npmjs.com/package/react-router-dom)
 
 ## Other useful informations
-* Integrated TypeScript definition files for react.js + redux + react-redux + node + ecmaScript 6
+* Integrated TypeScript definition files for react.js + redux + react-redux + node
 * Integrated sourcemaps (for a better development experience)
 * Uglify CSS and JS when you want to release
 * Automatic reload when you made changes to an existing or new file!

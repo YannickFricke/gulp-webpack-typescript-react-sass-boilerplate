@@ -47,15 +47,11 @@ const config = {
 
 gulp.task('compile-ts', function(cb)
 {
-	console.log(config.developmentMode);
-
-	$.pump([
-			gulp.src('./src/ts/index.tsx'),
-			$.webpack(config.webpack),
-			$.if('*.js', $.if(!config.developmentMode, $.uglify())),
-			$.if(!config.developmentMode, $.ignore('bundle.js.map')),
-			gulp.dest($.if(!config.developmentMode, config.distDir, config.assetDir) + 'js')
-		], cb)
+	return gulp.src('./src/ts/index.tsx')
+				.pipe($.webpack(config.webpack))
+				.pipe($.if('*.js', $.if(!config.developmentMode, $.uglify())))
+				.pipe($.if(!config.developmentMode, $.ignore('bundle.js.map')))
+				.pipe(gulp.dest($.if(!config.developmentMode, config.distDir, config.assetDir) + 'js'));
 });
 
 gulp.task('ts-reload', ['compile-ts'], function(callback)
