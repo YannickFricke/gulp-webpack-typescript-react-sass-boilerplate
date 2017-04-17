@@ -1,16 +1,17 @@
 {
   "name": "boilerplate",
   "version": "1.0.0",
-  "description": "",
+  "description": "Small not opinionated react.js boilerplate",
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=development gulp dev",
     "release": "NODE_ENV=release gulp release",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Yannick Fricke",
+  "license": "MIT",
   "dependencies": {
+    "classnames": "^2.2.5",
     "gulp": "^3.9.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
@@ -40,5 +41,9 @@
     "typescript": "^2.2.2",
     "webpack": "^2.4.1",
     "webpack-stream": "^3.2.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/YannickFricke/gulp-webpack-typescript-react-sass-boilerplate/issues"
+  },
+  "homepage": "https://github.com/YannickFricke/gulp-webpack-typescript-react-sass-boilerplate/"
 }
