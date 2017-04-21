@@ -4,8 +4,8 @@
   "description": "Small not opinionated react.js boilerplate",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=development gulp dev",
-    "release": "NODE_ENV=release gulp release",
+    "dev": "gulp dev",
+    "release": "gulp release",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Yannick Fricke",
