@@ -45,46 +45,82 @@ const config = {
   * Tasks
   */
 
-gulp.task('compile-ts', function(cb)
+gulp.task('compile-ts:dev', function(cb)
 {
-	return gulp.src('./src/ts/index.tsx')
-				.pipe($.webpack(config.webpack))
-				.pipe($.if('*.js', $.if(!config.developmentMode, $.uglify())))
-				.pipe($.if(!config.developmentMode, $.ignore('bundle.js.map')))
-				.pipe(gulp.dest($.if(!config.developmentMode, config.distDir, config.assetDir) + 'js'));
+	$.pump([
+			gulp.src('./src/ts/index.tsx'),
+			$.webpack(config.webpack),
+			gulp.dest(config.assetDir + 'js')
+		], cb)
 });
 
-gulp.task('ts-reload', ['compile-ts'], function(callback)
+gulp.task('compile-ts:release', function(cb)
+{
+	$.pump([
+			gulp.src('./src/ts/index.tsx'),
+			$.webpack(config.webpack),
+			$.if('*.js', $.uglify().on('error', function(error)
+				{
+					console.log(error);
+				})),
+			$.ignore('bundle.js.map'),
+			gulp.dest(config.distDir + 'js')
+		], cb)
+});
+
+gulp.task('ts-reload', ['compile-ts:dev'], function(callback)
 {
 	$.browserSync.reload();
 	callback();
 });
 
-gulp.task('bundle-sass', function()
+gulp.task('bundle-sass:dev', function(cb)
 {
-	return gulp.src(config.globs.sass)
-				.pipe($.sourcemap.init())
-				.pipe($.sass().on('error', $.sass.logError))
-				.pipe($.autoPrefixer(config.autoprefixer))
-				.pipe($.if(!config.developmentMode, $.cssmin()))
-				.pipe($.concat('bundle.css'))
-				.pipe($.sourcemap.write('.'))
-				.pipe($.if(!config.developmentMode, $.ignore('bundle.css.map')))
-				.pipe(gulp.dest($.if(!config.developmentMode, config.distDir, config.assetDir) + 'css'))
-				.pipe($.browserSync.stream({match: '**/*.css'}));
+	$.pump([
+			gulp.src(config.globs.sass),
+			$.sourcemap.init(),
+			$.sass().on('error', $.sass.logError),
+			$.autoPrefixer(config.autoprefixer),
+			$.concat('bundle.css'),
+			$.sourcemap.write('.'),
+			gulp.dest(config.assetDir + 'css'),
+			$.browserSync.stream({match: '**/*.css'})
+		], cb);
 });
 
-gulp.task('copy-images', function()
+gulp.task('bundle-sass:release', function(cb)
+{
+	$.pump([
+			gulp.src(config.globs.sass),
+			$.sass().on('error', $.sass.logError),
+			$.autoPrefixer(config.autoprefixer),
+			$.cssmin(),
+			$.concat('bundle.css'),
+			gulp.dest(config.distDir + 'css'),
+		], cb);
+});
+
+gulp.task('copy-images:dev', function()
 {
 	del(config.assetDir + 'img/**/*');
 	return gulp.src(
 		[
 			config.globs.images,
 			'!src/images/.gitkeep'
-		]).pipe(gulp.dest($.if(!config.developmentMode, config.distDir, config.assetDir) + 'img/'));
+		]).pipe(gulp.dest(config.assetDir + 'img/'));
 });
 
-gulp.task('dev', ['compile-ts', 'bundle-sass', 'copy-images'], function()
+gulp.task('copy-images:release', function()
+{
+	del(config.distDir + 'img/**/*');
+	return gulp.src(
+		[
+			config.globs.images,
+			'!src/images/.gitkeep'
+		]).pipe(gulp.dest(config.distDir + 'img/'));
+});
+
+gulp.task('dev', ['compile-ts:dev', 'bundle-sass:dev', 'copy-images:dev'], function()
 {
 	$.browserSync.init({
 		server: {
@@ -101,10 +137,10 @@ gulp.task('dev', ['compile-ts', 'bundle-sass', 'copy-images'], function()
 		}
 	});
 
-	gulp.watch(config.globs.sass, ['bundle-sass']);
+	gulp.watch(config.globs.sass, ['bundle-sass:dev']);
 	gulp.watch(config.globs.ts, ['ts-reload']);
-	gulp.watch(config.globs.images, ['copy-images']);
+	gulp.watch(config.globs.images, ['copy-images:dev']);
 	gulp.watch(config.globs.html).on('change', $.browserSync.reload);
 });
 
-gulp.task('release', ['bundle-sass', 'compile-ts', 'copy-images']);
+gulp.task('release', ['bundle-sass:release', 'compile-ts:release', 'copy-images:release']);

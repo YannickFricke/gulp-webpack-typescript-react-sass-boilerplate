@@ -1,4 +1,6 @@
 import { Reducer } from 'redux'
+import * as object_assign from 'object-assign'
+
 import { AppStoreState } from '../StoreTypes'
 import { ExampleAppAction } from '../actions/AppStoreActions'
 
@@ -20,7 +22,7 @@ export function AppReducer(state: AppStoreState, action: ExampleAppAction): AppS
 				welcomeMessage: action.welcomeMessage
 			}
 
-			return Object.assign({}, state, newState);
+			return object_assign({}, state, newState);
 	}
 
 	return state;
