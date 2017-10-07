@@ -1,6 +1,6 @@
-var gulp = require('gulp');
-var del  = require('del');
-var fs   = require('fs');
+const gulp = require('gulp');
+const del = require('del');
+const fs   = require('fs');
 
 /**
   * Plugins
@@ -126,8 +126,8 @@ gulp.task('dev', ['compile-ts:dev', 'bundle-sass:dev', 'copy-images:dev'], funct
 		server: {
 			baseDir: './public/',
 			middleware: function(req, res, next) {
-				var fileName = req.url.split("?")[0];
-                var fileExists = fs.existsSync(__dirname + "/public" + fileName);
+				let fileName = req.url.split("?")[0];
+                let fileExists = fs.existsSync(__dirname + "/public" + fileName);
                 if (!fileExists && req.url.indexOf("browser-sync-client") < 0)
                 {
                     req.url = "/index.html";
