@@ -26,7 +26,7 @@ Clone or download this repository. Run `"npm install"` to install all dependenci
 * Integration of redux-dev-tools [Firefox Plugin](https://addons.mozilla.org/en-US/firefox/addon/remotedev/) [Chrome Plugin](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)
 
 ## Why should I use this boilerplate?
-Most of the boilerplates are blown up. This one is slim and contains only **some** things you need. I don't want to prescribe which software you should use and which not. Amongst other things offers this boilerplate the whole strength of TypeScript. It was never better to develop a frontend application with a "typed" language. It's much more less error prone! Togeather with Sass and autoprefixer you have the ultimate tools to speed up the css development process.
+Most of the boilerplates are blown up. This one is slim and contains only **some** things you need. I don't want to prescribe which software you should use and which not. Amongst other things this boilerplate offers the whole strength of TypeScript. It was never better to develop a frontend application with a "typed" language. It's much more less error prone! Togeather with Sass and autoprefixer you have the ultimate tools to speed up the css development process.
 
 ## Where to start?
 Your code and images lives in the "src" directory. From there everything gets compiled and copied to the "public" directory when you run `"npm run dev"`.
