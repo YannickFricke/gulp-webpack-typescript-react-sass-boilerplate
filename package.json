@@ -15,12 +15,12 @@
   },
   "homepage": "https://github.com/YannickFricke/gulp-webpack-typescript-react-sass-boilerplate/",
   "devDependencies": {
-    "@types/node": "^8.0.33",
-    "@types/react": "^16.0.10",
-    "@types/react-dom": "^16.0.1",
-    "@types/react-redux": "^5.0.10",
-    "@types/react-router-dom": "^4.0.8",
-    "awesome-typescript-loader": "^3.2.3",
+    "@types/node": "^8.0.50",
+    "@types/react": "^16.0.20",
+    "@types/react-dom": "^16.0.2",
+    "@types/react-redux": "^5.0.12",
+    "@types/react-router-dom": "^4.2.0",
+    "awesome-typescript-loader": "^3.3.0",
     "browser-sync": "^2.18.13",
     "classnames": "^2.2.5",
     "del": "^3.0.0",
@@ -40,8 +40,8 @@
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
-    "typescript": "^2.5.3",
-    "webpack": "^3.6.0",
+    "typescript": "^2.6.1",
+    "webpack": "^3.8.1",
     "webpack-stream": "^4.0.0"
   }
 }
